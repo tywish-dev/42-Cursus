@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:46:14 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/13 18:51:53 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/10/14 12:22:04 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

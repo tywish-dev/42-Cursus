@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:27:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/13 18:51:49 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/10/14 12:30:26 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		len++;
 	i = 0;
 	j = 0;
-	while (dst[i] && i < size)
+	while (dst[i] && i < dstsize)
 		i++;
-	while (src[j] && (i + j + 1) < size)
+	while (src[j] && (i + j + 1) < dstsize)
 	{
 		dst[i + j] = src[j];
 		j++;
 	}
-	if (i < size)
+	if (i < dstsize)
 		dst[i + j] = '\0';
 	return (i + len);
 }

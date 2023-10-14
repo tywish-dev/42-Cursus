@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:38:58 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/13 18:51:54 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/10/14 12:22:55 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

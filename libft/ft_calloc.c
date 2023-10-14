@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:32:07 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/13 18:52:02 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/10/14 15:41:23 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
