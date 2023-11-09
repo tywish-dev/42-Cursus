@@ -6,7 +6,7 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/18 14:26:18 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/10/23 12:41:29 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	ft_print_uint(unsigned int n)
 {
 	unsigned int	nb;
 	unsigned int	i;
-	
+
 	nb = n;
 	i = 0;
 	if (nb == 0)
 		i++;
-	while(nb > 0)
+	while (nb > 0)
 	{
 		nb /= 10;
 		i++;

@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = libft
+NAME = libft.a
 ARFLAGS = -rcs
 RM = rm -rf
 
@@ -17,7 +17,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar $(ARFLAGS) $(NAME).a $(OBJS)
+	ar $(ARFLAGS) $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -26,7 +26,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME).a
+	$(RM) $(NAME)
 
 re: fclean all
 

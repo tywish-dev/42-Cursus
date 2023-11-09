@@ -6,33 +6,27 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:38:19 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/17 08:32:16 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/11/02 13:39:58 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*p;
-
-	p = (unsigned char *)s;
-	while (n)
-	{
-		*p = 0;
-		n--;
-		p++;
-	}
-}
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
+	size_t	i;
 
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, count * size);
+	i = count * size;
+	while (i)
+	{
+		*ptr = 0;
+		i--;
+		ptr++;
+	}
 	return (ptr);
 }
 
