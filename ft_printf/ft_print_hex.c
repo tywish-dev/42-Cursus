@@ -6,49 +6,55 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:20:21 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/24 08:41:37 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/11/24 22:33:29 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_hexlen(unsigned int val)
+static char	*create_string(unsigned int value, int *strlen)
 {
-	int	len;
+	int				i;
+	unsigned int	temp;
+	char			*str;
 
-	len = 0;
-	while (val)
+	i = 0;
+	temp = value;
+	while (temp != 0)
 	{
-		len++;
-		val /= 16;
+		temp = temp / 16;
+		i++;
 	}
-	return (len);
+	str = calloc(i + 1, sizeof(char));
+	*strlen = i - 1;
+	return (str);
 }
 
-static void	ft_puthex(unsigned int val, char format)
+int	ft_print_hex(unsigned int value, int asc)
 {
-	if (val >= 16)
-	{
-		ft_puthex(val / 16, format);
-		ft_puthex(val % 16, format);
-	}
-	else
-	{
-		if (format == 'x')
-			ft_putchar_fd((val - 10 + 'a'), 1);
-		else if (format == 'X')
-			ft_putchar_fd((val - 10 + 'A'), 1);
-	}
-}
+	unsigned int	tempval;
+	char			*printout;
+	int				i;
+	int				*iptr;
 
-int	ft_print_hex(unsigned int val, char format)
-{
-	if (val == 0)
+	iptr = &i;
+	tempval = value;
+	printout = create_string(value, iptr);
+	if (!printout)
+		return (0);
+	while (tempval != 0)
 	{
-		write(1, "0", 1);
-		return (1);
+		if ((tempval % 16) < 10)
+			printout[i] = (tempval % 16) + 48;
+		else
+			printout[i] = (tempval % 16) + asc;
+		tempval = tempval / 16;
+		i--;
 	}
-	else
-		ft_puthex(val, format);
-	return (ft_hexlen(val));
+	ft_putstr_fd(printout, 1);
+	i = ft_strlen(printout);
+	free(printout);
+	if (value == 0)
+		i += ft_print_char('0');
+	return (i);
 }

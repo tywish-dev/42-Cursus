@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:00 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:07 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/12 21:36:55 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/14 15:49:40 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_string(char *s)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	if (!s)
+	while (i < n && (s1[i] || s2[i]))
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	while (s[i])
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
-	ft_putstr_fd(s, 1);
-	return (i);
+	}
+	return (0);
 }
-

@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 17:34:49 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:51 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
+char	*ft_strdup(const char *s1)
 {
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
-		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
+	char	*new;
+	size_t	len;
+
+	len = ft_strlen(s1) + 1;
+	new = (char *)malloc(sizeof(*new) * len);
+	if (!new)
+		return (NULL);
+	return ((char *)ft_memcpy(new, s1, len));
 }
-
-int	ft_print_uint(unsigned int nb)
-{
-	unsigned int	i;
-
-	printout(nb);
-	i = 1;
-	while (nb > 9)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	return (i);
-}
-
-

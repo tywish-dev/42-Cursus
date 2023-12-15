@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/12 21:53:15 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:49 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
-		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
-}
+	size_t	i;
+	size_t	len;
 
-int	ft_print_uint(unsigned int nb)
-{
-	unsigned int	i;
-
-	printout(nb);
-	i = 1;
-	while (nb > 9)
+	len = 0;
+	while (src[len])
+		len++;
+	if (!size)
+		return (len);
+	i = 0;
+	while (src[i] && (i < size - 1))
 	{
-		nb = nb / 10;
+		dst[i] = src[i];
 		i++;
 	}
-	return (i);
+	dst[i] = '\0';
+	return (len);
 }
-
-

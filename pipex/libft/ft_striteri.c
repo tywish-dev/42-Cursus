@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 18:34:28 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:50 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
-{
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
-		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
-}
-
-int	ft_print_uint(unsigned int nb)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
-	printout(nb);
-	i = 1;
-	while (nb > 9)
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		nb = nb / 10;
-		i++;
+		(*f)(i, (s + i));
+		++i;
 	}
-	return (i);
 }
-
-

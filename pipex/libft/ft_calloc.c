@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:00 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:07 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 17:32:07 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/14 15:41:23 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_string(char *s)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	i;
+	void	*ptr;
 
-	i = 0;
-	if (!s)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	while (s[i])
-		i++;
-	ft_putstr_fd(s, 1);
-	return (i);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
-

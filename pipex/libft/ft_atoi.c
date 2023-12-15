@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 15:52:22 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:52:02 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
+int	ft_atoi(const char *str)
 {
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
-		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
-}
+	size_t	i;
+	int		sign;
+	int		res;
 
-int	ft_print_uint(unsigned int nb)
-{
-	unsigned int	i;
-
-	printout(nb);
-	i = 1;
-	while (nb > 9)
+	i = 0;
+	res = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		nb = nb / 10;
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	return (i);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (res * 10) + (str[i] - '0');
+		i++;
+	}
+	return (sign * res);
 }
-
-

@@ -1,36 +1,37 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-
-INCLUDE = include
-LIBFTDIR = ./libft/
 NAME = libftprintf.a
-ARFLAGS = -rcs
-RM = rm -rf
+LIBFTNAME = libft.a
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+LIBFTDIR = ./libft
 
-SRCS = ft_print_char.c ft_print_hex.c ft_print_int.c ft_print_uint.c \
-		ft_print_pointer.c ft_print_string.c ft_printf.c \
+SRCS = 	ft_printf.c \
+		ft_print_pointer.c \
+		ft_print_uint.c \
+		ft_print_string.c \
+		ft_print_int.c \
+		ft_print_char.c \
+		ft_print_hex.c \
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	make -C ./libft
-	cp libft/libft.a .
-	mv libft.a $(NAME)
-	ar $(ARFLAGS) $(NAME) $(OBJS)
+makelibft:
+	@make -C $(LIBFTDIR)
+	@cp $(LIBFTDIR)/$(LIBFTNAME) .
+	@mv $(LIBFTNAME) $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): makelibft $(OBJS)
+	@ar -r $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS)
-	cd $(LIBFTDIR) && make clean
-
+	@rm -f $(OBJS)
+	@cd $(LIBFTDIR) && make clean
+	
 fclean: clean
-	$(RM) $(NAME)
-	cd $(LIBFTDIR) && make fclean
-
+	@rm -f $(NAME)
+	@cd $(LIBFTDIR) && make fclean
+	
 re: fclean all
 
-.PHONY: all, clean, fclean, re, bonus
+.PHONY: all, clean, fclean, re

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 18:41:11 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:52 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
+	if (!s)
 		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
+	write(fd, s, ft_strlen(s));
 }
-
-int	ft_print_uint(unsigned int nb)
-{
-	unsigned int	i;
-
-	printout(nb);
-	i = 1;
-	while (nb > 9)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	return (i);
-}
-
-

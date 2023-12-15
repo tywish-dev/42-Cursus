@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:43:33 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:10 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 17:56:04 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:44 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	printout(unsigned int nb)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (nb > 9)
-		ft_print_uint(nb / 10);
-	if (nb <= 9)
-	{
-		ft_putchar_fd(nb + 48, 1);
-		return ;
-	}
-	ft_putchar_fd((nb % 10) + 48, 1);
+	char	*subst;
+	size_t	size;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	size = ft_strlen(s + start);
+	if (size < len)
+		len = size;
+	subst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!subst)
+		return (NULL);
+	ft_strlcpy(subst, s + start, len + 1);
+	return (subst);
 }
-
-int	ft_print_uint(unsigned int nb)
-{
-	unsigned int	i;
-
-	printout(nb);
-	i = 1;
-	while (nb > 9)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	return (i);
-}
-
-

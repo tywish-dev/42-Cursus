@@ -6,7 +6,7 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:50 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/18 13:43:18 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/11/24 22:14:30 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ int	ft_print_int(int n)
 	unsigned int	i;
 
 	nb = n;
-	i = 0;
-	if (nb <= 0)
+	i = 1;
+	if (n < 0 && n != -2147483648)
 	{
+		nb = -n;
 		i++;
-		nb *= -1;
 	}
-	while (nb > 0)
+	while (nb > 9)
 	{
+		nb = nb / 10;
 		i++;
-		nb /= 10;
 	}
 	ft_putnbr_fd(n, 1);
+	if (n == -2147483648)
+		return (11);
 	return (i);
 }
+

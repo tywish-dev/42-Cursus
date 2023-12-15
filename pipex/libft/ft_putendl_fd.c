@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:00 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:07 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 18:43:49 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/14 15:52:16 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_string(char *s)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned int	i;
-
-	i = 0;
 	if (!s)
+		return ;
+	else
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		ft_putstr_fd(s, fd);
+		write(fd, "\n", 1);
 	}
-	while (s[i])
-		i++;
-	ft_putstr_fd(s, 1);
-	return (i);
 }
-

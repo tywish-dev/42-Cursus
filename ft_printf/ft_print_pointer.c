@@ -6,56 +6,55 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:40 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/10/23 12:41:08 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2023/11/24 22:21:05 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_ptr_len(uintptr_t num)
+static char	*create_string(unsigned long value, int *strlen)
 {
-	int	len;
+	int				i;
+	unsigned long	temp;
+	char			*str;
 
-	len = 0;
-	if (num)
+	i = 0;
+	temp = value;
+	while (temp != 0)
 	{
-		len++;
-		num /= 16;
+		temp = temp / 16;
+		i++;
 	}
-	return (len);
+	str = calloc(i + 1, sizeof(char));
+	*strlen = i - 1;
+	return (str);
 }
 
-static void	ft_putptr(uintptr_t num)
+int	ft_print_pointer(unsigned long value, int asc)
 {
-	if (num >= 16)
+	unsigned long	tempval;
+	char			*printout;
+	int				i;
+	int				*iptr;
+
+	iptr = &i;
+	tempval = value;
+	printout = create_string(value, iptr);
+	if (!printout)
+		return (0);
+	while (tempval != 0 && i-- >= 0)
 	{
-		ft_putptr(num / 16);
-		ft_putptr(num % 16);
-	}
-	else
-	{
-		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
+		if ((tempval % 16) < 10)
+			printout[i + 1] = (tempval % 16) + 48;
 		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
+			printout[i + 1] = (tempval % 16) + asc;
+		tempval = tempval / 16;
 	}
-}
-
-int	ft_print_pointer(unsigned long long ptr)
-{
-	int	len;
-
-	write(1, "0x", 2);
-	len = 2;
-	if (ptr == 0)
-	{
-		len++;
-		write(1, "0", 1);
-	}
-	else
-	{
-		ft_putptr(ptr);
-		len += ft_ptr_len(ptr);
-	}
-	return (len);
+	i = ft_strlen(printout);
+	i = i + ft_print_string("0x");
+	ft_putstr_fd(printout, 1);
+	free(printout);
+	if (value == 0)
+		i += ft_print_char('0');
+	return (i);
 }

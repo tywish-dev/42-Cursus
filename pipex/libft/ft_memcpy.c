@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:21:00 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2023/11/24 22:21:07 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/10/13 16:01:19 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/14 14:32:29 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_string(char *s)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	i = 0;
-	if (!s)
+	if (!dst && !src)
+		return (dst);
+	d = dst;
+	s = src;
+	while (n > 0)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		*d = *s;
+		d++;
+		s++;
+		n--;
 	}
-	while (s[i])
-		i++;
-	ft_putstr_fd(s, 1);
-	return (i);
+	return (dst);
 }
-
