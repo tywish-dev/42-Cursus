@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 15:14:56 by samyilma          #+#    #+#             */
-/*   Updated: 2024/01/27 16:02:58 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2024/01/27 16:06:32 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/01/27 16:07:30 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <sys/types.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include "libft/libft.h"
+void	init_sig(int sig, void (*handler)(int, siginfo_t *, void *))
+{
+	struct sigaction	susr;
 
-void	init_sig(int sig, void (*handler)(int, siginfo_t *, void *));
-
-#endif
+	susr.sa_sigaction = handler;
+	susr.sa_flags = SA_SIGINFO | SA_RESTART | SA_NODEFER;
+	sigemptyset(&susr.sa_mask);
+	if (sig == SIGUSR1)
+		sigaction(SIGUSR1, &susr, 0);
+	else if (sig == SIGUSR2)
+		sigaction(SIGUSR2, &susr, 0);
+}
