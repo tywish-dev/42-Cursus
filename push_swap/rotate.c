@@ -6,7 +6,7 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:01:28 by samyilma          #+#    #+#             */
-/*   Updated: 2023/12/26 12:39:33 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2024/02/09 17:17:34 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	rotate(t_stack **stack)
 {
-	t_stack	*elem;
+	t_stack	*tmp;
 	t_stack	*tail;
 
-	elem = *stack;
-	*stack = *stack->next;
-	tail = get_stack_tail(stack);
-	elem->next = NULL;
-	tail->next = elem;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tail = get_stack_tail(*stack);
+	tmp->next = NULL;
+	tail->next = tmp;
 }
 
 void	ra(t_stack **stack_a)

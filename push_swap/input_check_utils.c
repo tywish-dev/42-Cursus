@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   input_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 12:01:13 by samyilma          #+#    #+#             */
-/*   Updated: 2024/02/09 17:16:33 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2024/02/09 17:03:19 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/02/09 17:03:42 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack **src, t_stack **dest)
+int	is_digit(char c)
 {
-	t_stack	*elem;
-
-	if (*src == NULL)
-		return ;
-	elem = (*src)->next;
-	(*src)->next = *dest;
-	*dest = *src;
-	*src = elem;
+	return (c >= '0' && c <= '9');
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+int	is_sign(char c)
 {
-	push(stack_b, stack_a);
-	ft_putstr("pa\n");
+	return (c == '+' || c == '-');
 }
 
-void	pb(t_stack **stack_a, t_stack **stack_b)
+int	nbstr_cmp(const char *s1, const char *s2)
 {
-	push(stack_a, stack_b);
-	ft_putstr("pb\n");
+	int	i;
+	int	j;
+
+	i = 0;
+	j = i;
+	if (s1[i] == '+')
+	{
+		if (s2[j] != '+')
+			i++;
+	}
+	else
+	{
+		if (s2[j] == '+')
+			j++;
+	}
+	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
+	{
+		i++;
+		j++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }

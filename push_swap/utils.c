@@ -6,7 +6,7 @@
 /*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:01:34 by samyilma          #+#    #+#             */
-/*   Updated: 2023/12/26 13:27:44 by sametyilmaz      ###   ########.fr       */
+/*   Updated: 2024/02/09 17:20:35 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	free_stack(t_stack **stack)
 		return ;
 	while (*stack)
 	{
-		tmp = *stack->next;
+		tmp = (*stack)->next;
 		free(*stack);
-		*stack->next = tmp;
+		(*stack)->next = tmp;
 	}
 	*stack = NULL;
 }
