@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:30:01 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 18:06:53 by faata            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:58:52 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	ft_push_swap(char **av)
 
 int	main(int argc, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (argc > 1)
 	{
 		av++;
@@ -51,6 +54,10 @@ int	main(int argc, char **av)
 				return (write(2, "Error\n", 6));
 		}
 		ft_push_swap(av);
+		while (av[i])
+		{
+			ft_printf("%d ", &av[i++]);
+		}
 		return (0);
 	}
 	return (0);
