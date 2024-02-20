@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:30:20 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 14:12:00 by faata            ###   ########.fr       */
+/*   Created: 2024/02/20 17:29:25 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/02/20 17:29:26 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../push_swap.h"
 

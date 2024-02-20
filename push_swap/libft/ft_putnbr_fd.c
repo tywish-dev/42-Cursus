@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: samyilma <samyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 18:21:39 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:25:20 by faata            ###   ########.fr       */
+/*   Created: 2023/10/13 18:46:14 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/14 12:22:04 by samyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n % 10, fd);
 	}
 	else
-		ft_putchar_fd(48 + n, fd);
+		ft_putchar_fd('0' + n, fd);
 }

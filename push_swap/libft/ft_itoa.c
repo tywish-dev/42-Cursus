@@ -3,65 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 18:19:32 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:23:18 by faata            ###   ########.fr       */
+/*   Created: 2023/10/13 18:28:59 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:58 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_len(int len, long n)
+static int	ft_nbrlen(int n)
 {
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		len++;
-		n *= -1;
-	}
-	while (n > 0)
+	int	i;
+
+	i = 0;
+	if (n <= 0)
+		i = 1;
+	while (n)
 	{
 		n /= 10;
-		len++;
+		++i;
 	}
-	return (len);
-}
-
-static char	*ft_res(char *res, long nbr, int len)
-{
-	while (nbr > 0)
-	{
-		res[len] = (nbr % 10) + 48;
-		len--;
-		nbr /= 10;
-	}
-	return (res);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	long	nbr;
-	char	*res;
+	char	*str;
 	int		len;
 
-	nbr = n;
-	len = ft_len(0, nbr);
-	res = (char *)malloc(sizeof(char) * len + 1);
-	if (!res)
+	len = ft_nbrlen(n);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
 		return (NULL);
-	res[len] = '\0';
-	len--;
-	if (nbr == 0)
+	if (n == 0)
+		str[0] = '0';
+	if (n < 0)
 	{
-		res[0] = 48;
-		return (res);
+		str[0] = '-';
+		if (n == -2147483648)
+		{
+			str[--len] = '8';
+			n /= 10;
+		}
+		n = -n;
 	}
-	if (nbr < 0)
+	while (len-- && n != 0)
 	{
-		nbr *= -1;
-		res[0] = '-';
+		str[len] = (n % 10) + '0';
+		n /= 10;
 	}
-	return (ft_res(res, nbr, len));
+	return (str);
 }

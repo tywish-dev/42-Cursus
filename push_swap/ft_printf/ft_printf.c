@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 11:46:29 by faata             #+#    #+#             */
-/*   Updated: 2023/10/23 13:28:46 by faata            ###   ########.fr       */
+/*   Created: 2024/02/20 17:29:37 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/02/20 17:29:37 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 

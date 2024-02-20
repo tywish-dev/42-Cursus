@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:30:06 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:56:33 by faata            ###   ########.fr       */
+/*   Created: 2024/02/20 17:29:13 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/02/20 17:29:13 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../push_swap.h"
 

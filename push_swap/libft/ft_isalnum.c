@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 18:18:28 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:23:31 by faata            ###   ########.fr       */
+/*   Created: 2023/10/12 16:07:18 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:52:01 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int arg)
+int	ft_isalnum(int c)
 {
-	return ((arg >= 48 && arg <= 57)
-		|| (arg >= 65 && arg <= 90)
-		|| (arg >= 97 && arg <= 122));
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

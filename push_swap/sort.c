@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:29:55 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:46:16 by faata            ###   ########.fr       */
+/*   Created: 2024/02/20 17:28:35 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2024/02/20 17:28:36 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "push_swap.h"
 

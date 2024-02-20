@@ -3,23 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 18:23:15 by faata             #+#    #+#             */
-/*   Updated: 2024/01/30 13:25:54 by faata            ###   ########.fr       */
+/*   Created: 2023/10/13 17:58:54 by sametyilmaz       #+#    #+#             */
+/*   Updated: 2023/10/13 18:51:50 by sametyilmaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const	*s1, char const	*s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*str;
+	char	*new;
+	size_t	len1;
+	size_t	len2;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
+	if (!s1 && !s2)
+		return (ft_strdup(""));
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	new = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!new)
 		return (NULL);
-	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
-	ft_strlcpy(str + ft_strlen(s1), s2, ft_strlen(s2) + 1);
-	return (str);
+	ft_strlcpy(new, s1, len1 + 1);
+	ft_strlcat(new, s2, len1 + len2 + 1);
+	return (new);
 }
