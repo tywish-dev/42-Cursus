@@ -2,7 +2,7 @@ SERVER_SRCS	= server.c utils.c
 CLIENT_SRCS	= client.c utils.c
 HEADERS		= minitalk.h
 
-CC			= clang -Wall -Werror -Wextra
+CC			= gcc -Wall -Werror -Wextra
 CC_FLAGS	= -Llibft -lft
 
 %.o: %.c ${HEADERS} libft/libft.a

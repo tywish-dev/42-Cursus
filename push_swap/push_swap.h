@@ -1,76 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/30 13:41:42 by faata             #+#    #+#             */
+/*   Updated: 2024/01/30 13:56:20 by faata            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
+# include "libft/libft.h"
 # include <stdlib.h>
-# include <limits.h>
-# include <stdio.h>
+# include "ft_printf/ft_printf.h"
 
-/* Stack Struct */
 typedef struct s_stack
 {
-	int				value;
-	int				index;
-	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
-	struct s_stack	*next;
+	int	*a;
+	int	*b;
+	int	sizea;
+	int	sizeb;
 }	t_stack;
 
-/* Operations */
-void	sa(t_stack **stack_a);
-void	sb(t_stack **stack_b);
-void	ss(t_stack **stack_a, t_stack **stack_b);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
-
-/* Utils */
-void	free_stack(t_stack **stack);
-int		get_abs(int nb);
-long int	ft_atoi(char *str);
-void	ft_putstr(char *str);
-void	exit_error(t_stack **stack_a, t_stack **stack_b);
-
-/* Stack Utils */
-t_stack	*get_stack_tail(t_stack *stack);
-t_stack *get_stack_before_tail(t_stack *stack);
-int		get_stack_size(t_stack *stack);
-void	add_stack_tail(t_stack **stack, t_stack *new);
-t_stack *new_stack(int val);
-
-/* Cost */
-void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
-void	get_cost(t_stack **stack_a, t_stack **stack_b);
-
-/* Do Move */
-void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
-
-/* Init */
-t_stack	*fill_stack_values(int ac, char **av);
-void	assign_index(t_stack *stack_a, int stack_size);
-
-/* Position */
-int		get_lowest_index_position(t_stack **stack);
-void	get_target_position(t_stack **a, t_stack **b);
-
-/* Sort */
-void	sort(t_stack **stack_a, t_stack **stack_b);
-void	tiny_sort(t_stack **stack);
-
-/* Input Check */
-int		is_correct_input(char **av);
-int		is_digit(char c);
-int		is_sign(char c);
-int		nbstr_cmp(const char *s1, const char *s2);
-
-/* Main */
-int		is_sorted(t_stack *stack);
+void	ft_push_swap(char **av);
+int		ft_stacklen(char **av, int i);
+void	ft_err(int *stack);
+int		ft_qsatoi(char *str, int *stack, unsigned int i, int sign);
+void	ft_checkdup(int *stack, int size, int i, int j);
+void	ft_sa(t_stack *stack);
+void	ft_sb(t_stack *stack);
+void	ft_ss(t_stack *stack);
+void	ft_ra(t_stack *stack);
+void	ft_rb(t_stack *stack);
+void	ft_rr(t_stack *stack);
+void	ft_rra(t_stack *stack);
+void	ft_rrb(t_stack *stack);
+void	ft_rrr(t_stack *stack);
+void	ft_pb(t_stack *stack);
+void	ft_pa(t_stack *stack);
+int		ft_sort(t_stack *stack, int size);
+int		ft_push(t_stack *stack, int len, char c);
+int		ft_get_mid(int *midvalue, int *stack, int size);
+int		ft_checks(int *pile, int size, int order);
+void	ft_sort3(t_stack *s);
+void	ft_sort_tmp(int *tmp_stack, int size);
+int		ft_qsa(t_stack *stack, int len, int rbc, int midvalue);
+int		ft_qsb(t_stack *stack, int len, int rbc);
+void	ft_qs3(t_stack *stack, int len);
+int		ft_sortsb(t_stack *stack, int len);
 
 #endif

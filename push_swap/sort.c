@@ -3,77 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sametyilmaz <sametyilmaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 16:58:55 by sametyilmaz       #+#    #+#             */
-/*   Updated: 2024/02/09 17:00:22 by sametyilmaz      ###   ########.fr       */
+/*   Created: 2023/11/16 14:29:55 by faata             #+#    #+#             */
+/*   Updated: 2024/01/30 13:46:16 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_tmp(int *tmps, int size)
 {
-	int	stack_size;
-	int	pushed;
 	int	i;
+	int	n;
+	int	tmp;
 
-	stack_size = get_stack_size(*stack_a);
-	pushed = 0;
 	i = 0;
-	while (stack_size > 6 && i < stack_size && pushed < stack_size / 2)
+	while (i < size)
 	{
-		if ((*stack_a)->index <= stack_size / 2)
+		n = i + 1;
+		while (n < size)
 		{
-			pb(stack_a, stack_b);
-			pushed++;
+			if (tmps[i] > tmps[n])
+			{
+				tmp = tmps[i];
+				tmps[i] = tmps[n];
+				tmps[n] = tmp;
+			}
+			n++;
 		}
-		else
-			ra(stack_a);
 		i++;
 	}
-	while (stack_size - pushed > 3)
-	{
-		pb(stack_a, stack_b);
-		pushed++;
-	}
 }
 
-static void	shift_stack(t_stack **stack_a)
+void	ft_sort3(t_stack *st)
 {
-	int	lowest_pos;
-	int	stack_size;
-
-	stack_size = get_stack_size(*stack_a);
-	lowest_pos = get_lowest_index_position(stack_a);
-	if (lowest_pos > stack_size / 2)
+	if (st->a[0] > st->a[1] && st->a[0] < st->a[2] && st->a[1] < st->a[2])
+		ft_sa(st);
+	if (st->a[0] > st->a[1] && st->a[0] > st->a[2] && st->a[1] > st->a[2])
 	{
-		while (lowest_pos < stack_size)
-		{
-			rra(stack_a);
-			lowest_pos++;
-		}
+		ft_sa(st);
+		ft_rra(st);
 	}
+	if (st->a[0] > st->a[1] && st->a[0] > st->a[2] && st->a[1] < st->a[2])
+		ft_ra(st);
+	if (st->a[0] < st->a[1] && st->a[0] < st->a[2] && st->a[1] > st->a[2])
+	{
+		ft_sa(st);
+		ft_ra(st);
+	}
+	if (st->a[0] < st->a[1] && st->a[0] > st->a[2] && st->a[1] > st->a[2])
+		ft_rra(st);
+}
+
+int	ft_sort(t_stack *stack, int size)
+{
+	if (ft_checks(stack->a, stack->sizea, 0) == 0)
+	{
+		if (size == 2)
+			ft_sa(stack);
+		else if (size == 3)
+			ft_sort3(stack);
+		else
+			ft_qsa(stack, size, 0, 0);
+	}
+	return (0);
+}
+
+int	ft_push(t_stack *stack, int len, char c)
+{
+	if (c == 'a')
+		ft_pa(stack);
 	else
-	{
-		while (lowest_pos > 0)
-		{
-			ra(stack_a);
-			lowest_pos--;
-		}
-	}
-}
-
-void	sort(t_stack **stack_a, t_stack **stack_b)
-{
-	push_all_save_three(stack_a, stack_b);
-	tiny_sort(stack_a);
-	while (*stack_b)
-	{
-		get_target_position(stack_a, stack_b);
-		get_cost(stack_a, stack_b);
-		do_cheapest_move(stack_a, stack_b);
-	}
-	if (!is_sorted(*stack_a))
-		shift_stack(stack_a);
+		ft_pb(stack);
+	len--;
+	return (len);
 }
